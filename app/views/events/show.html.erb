@@ -1,0 +1,11 @@
+<h1>Event #<%= @event.id %> - <%= @event.event_date %> - <%= @event.event_type %></h1>
+
+<%= link_to 'Home', root_path %>
+
+<h2>Guests</h2>
+
+<ul>
+  <% @event.guests.each do |g| %>
+    <li><%= g.first_name + " " + g.last_name %></li>
+  <% end %>
+</ul>

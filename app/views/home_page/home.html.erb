@@ -1,14 +1,17 @@
 <h2>Home Page</h2>
 <% if user_signed_in? %>
+  <%= link_to "New Event", new_event_path %>
+  
+  <h3><%= current_user.email %>'s Events</h3>
+  <ul>
+    <% current_user.events.each do |event| %>
+      <li><%= link_to event.id.to_s + " - " + event.event_type.to_s + " - " + 
+              event.event_date.to_s + " - " + event.guests.count.to_s, event_path(event.id) %></li>
+    <% end %>
+  </ul>
   <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
 <% else %>
   <%= link_to 'Login', new_user_session_path %>
 <% end %>
 
-<h3><%= current_user.email %>'s Events</h3>
-<ul>
-  <% current_user.events.each do |event| %>
-    <li><%= event.id.to_s + " - " + event.event_type.to_s + " - " + 
-            event.event_date.to_s + " - " + event.guests.count.to_s %></li>
-  <% end %>
-</ul>
+
