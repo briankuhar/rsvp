@@ -1,0 +1,11 @@
+<h2>Edit Event <%= @event.id %></h2>
+
+<%= form_for(@event) do |f| %>
+  <%= f.label :event_type %>
+  <%= f.select :event_type, ['wedding','birthday'] %>
+  
+  <%= f.label :event_date %>
+  <%= f.text_field :event_date %>
+  
+  <%= f.submit "Save Changes" %>
+<% end %>
