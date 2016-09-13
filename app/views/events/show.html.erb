@@ -9,4 +9,6 @@
   <% @event.guests.each do |g| %>
     <li><%= g.first_name + " " + g.last_name %></li>
   <% end %>
+  
+  <%= link_to "Back", :back %>
 </ul>
