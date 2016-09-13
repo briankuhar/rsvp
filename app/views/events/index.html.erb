@@ -1,17 +1,27 @@
 <h2>Home Page</h2>
 <% if user_signed_in? %>
-  <%= link_to "New Event", new_event_path %>
   
-  <h3><%= @user.email %>'s Events</h3>
-  <ul>
-    <% @events.each do |event| %>
-      <li><%= link_to event.id.to_s + " - " + event.event_type.to_s + " - " + 
-              event.event_date.to_s + " - " + event.guests.count.to_s, event_path(event.id) %> | 
-              <%= link_to 'Delete', event, method: :delete, data: { confirm: "You sure?" } %></li>
-    <% end %>
-  </ul>
-  <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
-<% else %>
-  <%= link_to 'Login', new_user_session_path %>
+  <div class="col-sm-8 col-sm-offset-2">
+    <h2>My Events</h2>
+    <div class="float-right">
+    <%= link_to "New Event", new_event_path, class: "btn btn-primary float-right" %></div>
+  </div>
+  
+  <% @events.each do |event| %>
+    <div class="col-sm-8 col-sm-offset-2 well">
+      <div class="col-sm-8">
+        <h2><%= link_to event.event_name, event_path(event.id) %></h2>
+        <h3>Event Type: <%= event.event_type %></h3>
+        <h3>Guest Count: <%= event.guests.count %></h3>
+      </div>
+      <div class="col-sm-4">
+        <h3>Event Date: <%= event.event_date %></h3>
+        <h3>RSVPs Due By: <%= event.event_rsvp_date %></h3>
+        <p>Edit | <% link_to "Delete", destroy_events_path(event.id), :method => :delete %></p>
+      </div>
+    </div>
+  <% end %>
+
+
 <% end %>
 
