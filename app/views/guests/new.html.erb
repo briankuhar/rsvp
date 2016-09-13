@@ -1,0 +1,30 @@
+<div class="col-sm-6 col-sm-offset-3">
+  <%= form_for [@event, @guest] do |g| %>
+    <%= render 'shared/error_messages' %>
+  
+    <div class="form-group">
+      <%= g.label :first_name, class: "control-label" %>
+      <%= g.text_field :first_name, class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= g.label :last_name, class: "control-label" %>
+      <%= g.text_field :last_name, class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= g.label :email, class: "control-label" %>
+      <%= g.text_field :email, class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= g.label :phone, class: "control-label" %>
+      <%= g.text_field :phone, class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= g.submit "Add Guest", class: 'btn btn-primary' %>
+    </div>
+    
+  <% end %>
+</div>
