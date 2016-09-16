@@ -8,6 +8,7 @@
     <tr>
       <th>Guest Name</th>
       <th>Guest Status</th>
+      <th>Responded On</th>
       <th>Guest Email</th>
       <th>Guest Phone</th>
       <th>Actions</th>
@@ -15,7 +16,13 @@
     <% @guests.each do |guest| %>
     <tr>
       <td><%= guest.first_name + " " + guest.last_name %></td>
-      <td><%= guest.guest_status %></td>
+      <td>No
+        <label class="switch">
+          <input type="checkbox">
+          <div class="slider round"></div>
+        </label> Yes
+      </td>
+      <td>[Insert Date]</td>
       <td><%= guest.email %></td>
       <td><%= guest.phone %></td>
       <td><%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: "Are you sure?" } %></td>
