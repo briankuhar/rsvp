@@ -40,6 +40,13 @@ class EventsController < ApplicationController
     end
   end
   
+  
+  
+  def rsvp
+    @event = Event.find(params[:id])
+    @guests = @event.guests.all
+  end
+  
   def destroy
     Event.find(params[:id]).destroy
     redirect_to root_path

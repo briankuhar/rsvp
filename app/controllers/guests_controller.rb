@@ -16,6 +16,19 @@ class GuestsController < ApplicationController
   def update
   end
   
+  def update_status
+    
+    respond_to do |format|
+      if guest.update_attributes(params[:guest])
+        format.html { redirect_to event_guests_path, notice: 'Guest updated successfully' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: guest.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
   def new
     @event = Event.find(params[:event_id])
     @guest = @event.guests.new
@@ -24,7 +37,6 @@ class GuestsController < ApplicationController
   def create
     @event = Event.find(params[:event_id])
     @guest = @event.guests.new(guest_params)
-    @guest.guest_status = 'No Response'
     if @guest.save
       redirect_to event_guests_path
     else
