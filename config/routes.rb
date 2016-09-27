@@ -8,12 +8,9 @@ Rails.application.routes.draw do
       member do
         get 'rsvp', only: [:index]
         patch :update_status
-        
       end
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
   
   authenticated do
     root to: "events#index", as: :authenticated

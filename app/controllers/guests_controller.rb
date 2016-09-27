@@ -1,31 +1,23 @@
 class GuestsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :new]
+  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :new, :update_status]
   
   def index
     @event = Event.find(params[:event_id])
     @guests = @event.guests.all
   end
   
-  def show
-  end
-  
-  def edit
-    
-  end
-  
-  def update
-  end
-  
   def update_status
+    @event = Event.find(params[:event_id])
+    @guest = @event.guests.find(params[:id])
     
-    respond_to do |format|
-      if guest.update_attributes(params[:guest])
-        format.html { redirect_to event_guests_path, notice: 'Guest updated successfully' }
-        format.json { head :no_content }
+    if @guest != nil?
+      if @guest.guest_status == false
+        @guest.update_attributes(:guest_status => true)
       else
-        format.html { render action: "edit" }
-        format.json { render json: guest.errors, status: :unprocessable_entity }
+        @guest.update_attributes(:guest_status => false)
       end
+    else
+      #throw an error
     end
   end
   
@@ -52,7 +44,7 @@ class GuestsController < ApplicationController
   private
   
     def guest_params
-      params.require(:guest).permit(:first_name, :last_name, :email, :phone)
+      params.require(:guest).permit(:first_name, :last_name, :email, :phone, :guest_status)
     end
 
 end

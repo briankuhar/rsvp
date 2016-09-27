@@ -13,20 +13,22 @@
       <th>Guest Phone</th>
       <th>Actions</th>
     </tr>
-    <% @event.guests.each do |guest| %>
+    <% @guests.each do |guest| %>
     <tr>
       <td><%= guest.first_name + " " + guest.last_name %></td>
-      <td>No
+      <td>
         <label class="switch">
           <!--<input type="checkbox">
           <div class="slider round"></div>-->
-          <%= form_for guest, url: update_status_event_guest_path(guest), :html => { :id => 'guest_status_form' }, remote: true do |f| %>
-            
-              <%= f.check_box :guest_status, onchange: "$('#guest_status_form').submit();" %>
-            <div class="slider round">
-            </div>
-          <% end %>
-        </label> Yes
+            <%= check_box_tag 'status', guest.id, guest.guest_status, 
+                              data: { 
+                                remote: true, 
+                                url: url_for( action: :update_status, id: guest.id ),
+                                method: "PATCH"
+                              } 
+            %>
+            <div class="slider round"></div>
+        </label>
       </td>
       <td>No Response</td>
       <td><%= guest.email %></td>
