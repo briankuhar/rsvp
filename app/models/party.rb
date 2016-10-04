@@ -1,6 +1,7 @@
 class Party < ApplicationRecord
-  validates :party_name,  presence: true
   
   belongs_to :event
-  has_many :guests
+  has_many :guests, inverse_of: :party
+  accepts_nested_attributes_for :guests, :reject_if => proc { |attributes| attributes['last_name'].blank?  }
+  
 end

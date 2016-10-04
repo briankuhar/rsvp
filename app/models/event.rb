@@ -7,6 +7,6 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :parties
   has_many :guests
-  
+  accepts_nested_attributes_for :guests, :reject_if => proc { |attributes| attributes['last_name'].blank?  }
 
 end

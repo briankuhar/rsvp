@@ -4,12 +4,13 @@ Rails.application.routes.draw do
     member do
       get 'rsvp'
     end
-      resources :guests do
-        member do
-          get 'rsvp', only: [:index]
-          patch :update_status
-        end
+    resources :parties
+    resources :guests do
+      member do
+        get 'rsvp', only: [:index]
+        patch :update_status
       end
+    end
   end
   
   authenticated do
