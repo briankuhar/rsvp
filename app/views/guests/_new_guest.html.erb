@@ -1,0 +1,25 @@
+<div class="guestsForm">
+    
+  <%= form_for [@event, @guest] do |g| %>
+    <%= render 'shared/error_messages' %>
+    <div class="row">
+      <div class="form-group col-sm-3">
+        <%= g.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+      </div>
+      
+      <div class="form-group col-sm-3">
+        <%= g.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+      </div>
+      
+      <div class="form-group col-sm-3">
+        <%= g.text_field :email, placeholder: "Email Address", class: "form-control" %>
+      </div>
+      
+      <div class="form-group col-sm-3">
+        <%= g.text_field :phone, placeholder: "Phone Number", class: "form-control" %>
+      </div>
+      
+<hr>
+    </div>
+  <% end %>
+</div>

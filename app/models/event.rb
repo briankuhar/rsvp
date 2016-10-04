@@ -5,8 +5,8 @@ class Event < ApplicationRecord
   validates :event_rsvp_date,   presence: true
   
   belongs_to :user
+  has_many :parties
   has_many :guests
-  
-  def list_events
-  end
+  accepts_nested_attributes_for :guests, :reject_if => proc { |attributes| attributes['last_name'].blank?  }
+
 end

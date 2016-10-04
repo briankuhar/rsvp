@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     member do
       get 'rsvp'
     end
+    resources :parties
     resources :guests do
       member do
         get 'rsvp', only: [:index]

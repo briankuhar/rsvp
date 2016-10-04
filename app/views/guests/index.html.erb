@@ -1,8 +1,8 @@
 <div class="col-sm-12">
-    <h2><%= @event.event_name %> Guests</h2>
-    <div class="float-right">
-    <%= link_to "Add Guest", new_event_guest_path, class: "btn btn-primary btn-lg float-right" %></div>
-  </div>
+  <h2><%= @event.event_name %> Guests</h2>
+  <div class="float-right">
+  <%= link_to "Add Party", new_event_party_path, class: "btn btn-primary btn-lg float-right" %>
+</div>
 
   <table class="table table-striped table-hover">
     <tr>
@@ -33,7 +33,7 @@
       <td>No Response</td>
       <td><%= guest.email %></td>
       <td><%= guest.phone %></td>
-      <td><%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: "Are you sure?" } %></td>
+      <td><%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { remote: true } %></td>
     </tr>
     <% end %>
   </table>
