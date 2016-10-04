@@ -1,9 +1,13 @@
 class GuestsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :new, :update_status]
+  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :new, :update_status, :meal_selection]
   
   def index
     @event = Event.find(params[:event_id])
     @guests = @event.guests.all
+  end
+  
+  def meal_selection(guest)
+    return 'Meal'.html_safe
   end
   
   def update_status
@@ -11,7 +15,8 @@ class GuestsController < ApplicationController
     @guest = @event.guests.find(params[:id])
     
     if @guest != nil?
-      if @guest.guest_status == false
+      puts @guest.guest_status
+      if @guest.guest_status != true
         @guest.update_attributes(:guest_status => true)
       else
         @guest.update_attributes(:guest_status => false)

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rsvp</title>
+    <title>RSVP Site</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,7 +12,7 @@
     
     <header class="navbar navbar-fixed-top navbar-default">
       <div class="container">
-        <%= link_to "rsvp", root_path, id: "logo" %>
+        <%= link_to "RSVP Site", root_path, id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Help</a></li>
@@ -29,18 +29,22 @@
     </header>
     
     <div class="container">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
-          <a href="#" data-dismiss="alert" class="close">×</a>
-            <ul>
-              <li>
-                <%= value %>
-              </li>
-            </ul>
-        </div>
-      <% end %>
-      <%= yield %>
+      
+      <%= render "layouts/left_bar" %>
+      
+      <div class="col-sm-9">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>">
+            <a href="#" data-dismiss="alert" class="close">×</a>
+              <ul>
+                <li>
+                  <%= value %>
+                </li>
+              </ul>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
     </div>
-    
   </body>
 </html>
