@@ -12,9 +12,10 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bootstrap-sass', '3.3.6'
+gem 'pg'
 
 group :development, :test do
-  gem 'sqlite3'
+  #gem 'sqlite3'
   gem 'byebug', platform: :mri
 end
 
@@ -26,7 +27,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
