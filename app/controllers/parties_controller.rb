@@ -1,13 +1,13 @@
 class PartiesController < ApplicationController
   
   def new
-    @event = Event.find(params[:event_id])
+    @event = Event.friendly.find(params[:event_id])
     @party = @event.parties.new
     @party.guests.build
   end
   
   def create
-    @event = Event.find(params[:event_id])
+    @event = Event.friendly.find(params[:event_id])
     @party = @event.parties.new(party_params)
     if @party.save
       redirect_to event_guests_path(@event)
