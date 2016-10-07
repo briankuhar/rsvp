@@ -14,6 +14,7 @@ gem 'devise'
 gem 'bootstrap-sass', '3.3.6'
 gem 'pg'
 gem 'friendly_id'
+gem 'will_paginate'
 
 group :development, :test do
   #gem 'sqlite3'
