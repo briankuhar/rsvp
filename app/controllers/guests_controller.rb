@@ -2,7 +2,7 @@ class GuestsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :new, :update_status, :meal_selection]
   
   def index
-    @event = Event.find(params[:event_id])
+    @event = Event.friendly.find(params[:event_id])
     @guests = @event.guests.all
   end
   
@@ -11,7 +11,7 @@ class GuestsController < ApplicationController
   end
   
   def update_status
-    @event = Event.find(params[:event_id])
+    @event = Event.friendly.find(params[:event_id])
     @guest = @event.guests.find(params[:id])
     
     if @guest != nil?
@@ -27,12 +27,12 @@ class GuestsController < ApplicationController
   end
   
   def new
-    @event = Event.find(params[:event_id])
+    @event = Event.friendly.find(params[:event_id])
     @guest = @event.guests.new
   end
 
   def create
-    @event = Event.find(params[:event_id])
+    @event = Event.friendly.find(params[:event_id])
     @guest = @event.guests.new(guest_params)
     if @guest.save
       redirect_to event_guests_path

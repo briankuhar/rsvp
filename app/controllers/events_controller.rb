@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  layout :resolve_layout
+  
   before_action :authenticate_user!, only: [:index, :edit, :update, :destroy]
 
   def index
@@ -41,8 +43,6 @@ class EventsController < ApplicationController
     end
   end
   
-  
-  
   def rsvp
     @event = Event.friendly.find(params[:id])
     @guests = @event.guests.all
@@ -59,5 +59,13 @@ class EventsController < ApplicationController
       params.require(:event).permit(:event_type, :event_date, :event_name, :event_rsvp_date)
     end
 
+    def resolve_layout
+      case action_name
+      when "show"
+        "rsvp"
+      else
+        "application"
+      end
+    end
   
 end
