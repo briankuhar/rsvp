@@ -3,7 +3,7 @@ class GuestsController < ApplicationController
   
   def index
     @event = Event.friendly.find(params[:event_id])
-    @guests = @event.guests.all
+    @guests = @event.guests.paginate(:page => params[:page], :per_page => 15)
   end
   
   def meal_selection(guest)

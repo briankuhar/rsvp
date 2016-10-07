@@ -15,6 +15,7 @@
       <th>Guest Phone</th>
       <th>Actions</th>
     </tr>
+    <%= will_paginate @guests %>
     <% @guests.each do |guest| %>
     <tr>
       <td><%= guest.first_name + " " + guest.last_name %></td>

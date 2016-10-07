@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   def index
     @user = current_user
     unless @user.blank?
-      @events = @user.events.all
+      @events = @user.events.paginate(:page => params[:page], :per_page => 3)
     end
   end
 
