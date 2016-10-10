@@ -9,7 +9,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: rsvp_development
+  database: rsvp_test
   pool: 5
   username: kuhar
   password: kuhar

@@ -4,3 +4,11 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+
+namespace :db do
+  task bar: :environment do
+    puts 'RUNNING'
+    puts 'STILL RUNNING'
+  end
+end

@@ -1,6 +1,7 @@
 class Guest < ApplicationRecord
   
   belongs_to :party
+  belongs_to :event
   
   #def self.search(search)
   #  if search
