@@ -1,9 +1,12 @@
 class PartiesController < ApplicationController
   
+  def index
+  end  
+  
   def new
     @event = Event.friendly.find(params[:event_id])
     @party = @event.parties.new
-    @party.guests.build
+    10.times {@party.guests.build}
   end
   
   def create
@@ -12,9 +15,6 @@ class PartiesController < ApplicationController
     if @party.save
       redirect_to event_guests_path(@event)
     else
-      @party.errors.full_messages.each do |message|
-        puts message
-      end
       render 'new'
     end
   end
