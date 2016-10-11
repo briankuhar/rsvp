@@ -41,19 +41,20 @@
 #   end
 # end
 
-# Event.all.each do |event|
-#   50.times do
-#     @party = event.parties.create!
-#     3.times do
-#       first_name = Faker::Name.first_name
-#       last_name = Faker::Name.last_name
-#       email = Faker::Internet.email
-#       phone = Faker::Number.number(9)
+Event.all.each do |event|
+  20.times do
+    @party = event.parties.create!
+    3.times do
+      first_name = Faker::Name.first_name
+      last_name = Faker::Name.last_name
+      email = Faker::Internet.email
+      phone = Faker::Number.number(9)
       
-#       @party.guests.create!(first_name: first_name,
-#                           last_name: last_name,
-#                           email: email,
-#                           phone: phone)
-#     end
-#   end
-# end
+      @party.guests.create!(first_name: first_name,
+                          last_name: last_name,
+                          email: email,
+                          phone: phone,
+                          event_id: event.id)
+    end
+  end
+end

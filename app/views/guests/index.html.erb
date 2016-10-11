@@ -17,33 +17,33 @@
     </tr>
     <%= will_paginate @guests %>
     <% @guests.each do |guest| %>
-    <tr>
-      <td><%= guest.first_name + " " + guest.last_name %></td>
-      <td>
-        <label class="switch">
-          <!--<input type="checkbox">
-          <div class="slider round"></div>-->
-            <%= check_box_tag 'status', guest.id, guest.guest_status, 
-                              data: { 
-                                remote: true, 
-                                url: url_for( action: :update_status, id: guest.id ),
-                                method: "PATCH"
-                              } 
-            %>
-            <div class="slider round"></div>
-        </label>
-      </td>
-      <td>
-        <% if guest.guest_status != true %>
-          N/A
-        <% else %>
-          <%= 'Meal' %>
-        <% end %>
-      </td>
-      <td><%= guest.email %></td>
-      <td><%= guest.phone %></td>
-      <td><%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { remote: true } %></td>
-    </tr>
+      <tr>
+        <td><%= guest.first_name + " " + guest.last_name %></td>
+        <td>
+          <label class="switch">
+            <!--<input type="checkbox">
+            <div class="slider round"></div>-->
+              <%= check_box_tag 'status', guest.id, guest.guest_status, 
+                                data: { 
+                                  remote: true, 
+                                  url: url_for( action: :update_status, id: guest.id ),
+                                  method: "PATCH"
+                                } 
+              %>
+              <div class="slider round"></div>
+          </label>
+        </td>
+        <td>
+          <% if guest.guest_status != true %>
+            N/A
+          <% else %>
+            <%= 'Meal' %>
+          <% end %>
+        </td>
+        <td><%= guest.email %></td>
+        <td><%= guest.phone %></td>
+        <td><%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { remote: true } %></td>
+      </tr>
     <% end %>
   </table>
   

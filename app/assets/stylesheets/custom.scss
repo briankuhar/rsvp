@@ -2,25 +2,18 @@
 @import "bootstrap";
 
 /* ----------------- UNIVERSAL ----------------- */
+html {
+  min-height: 100%;
+}
 body {
   padding-top: 60px;
+  height: 100%;
 }
-
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
-}
-
-.center h1 {
-  margin-bottom: 10px;
-}
+section { overflow: auto;}
+textarea {resize: vertical;}
+.center {text-align: center;}
+.center h1 {margin-bottom: 10px;}
+.container {min-height: 100%;}
 
 .btn-primary {
   background-color: #13a8bb;
@@ -33,12 +26,8 @@ textarea {
 }
 
 
-
-
 /* ----------------- TYPOGRAPHY ----------------- */
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
+h1, h2, h3, h4, h5, h6 {line-height: 1;}
 
 h1 {
   font-size: 3em;
@@ -171,13 +160,8 @@ a:hover {
   transition: .4s;
 }
 
-input:checked + .slider {
-  background-color: #13a8bb;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #13a8bb;
-}
+input:checked + .slider {background-color: #13a8bb;}
+input:focus + .slider {box-shadow: 0 0 1px #13a8bb;}
 
 input:checked + .slider:before {
   -webkit-transform: translateX(42px);
@@ -186,19 +170,13 @@ input:checked + .slider:before {
 }
 
 /* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
+.slider.round {border-radius: 34px;}
 
-.slider.round:before {
-  border-radius: 50%;
-}
+.slider.round:before {border-radius: 50%;}
 
 
 /* ----------------- NAVS ----------------- */
-.event-nav {
-  margin-top: 20px;
-}
+.event-nav {margin-top: 20px;}
 
 .event-nav .active {
     color: #ffffff;
@@ -213,24 +191,18 @@ input:checked + .slider:before {
 }
 
 .left-navbar {
-  height: 100vh;
+  min-height: 100vh;
   background-color: #E9ECF5;
   padding-top: 50px;
   padding-bottom: 15px;
   margin-top: -50px;
 }
 
-.navbar-default {
-  background-color: #75ABBC;
-}
 
-.navbar-default .nav > li > a {
-  color: #f9f9f9;
-}
 
-.navbar-default .nav > li > a:hover {
-  color: #f9f9f9;
-}
+.navbar-default {background-color: #75ABBC;}
+.navbar-default .nav > li > a {color: #f9f9f9;}
+.navbar-default .nav > li > a:hover {color: #f9f9f9;}
 
 #logo  {
 }
@@ -241,6 +213,4 @@ input:checked + .slider:before {
   margin-bottom: 40px;
 }
 
-.event-guest-hdr .btn {
-  display: block;
-}
+.event-guest-hdr .btn {display: block;}
