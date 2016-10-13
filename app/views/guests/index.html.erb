@@ -6,6 +6,14 @@
     <h4 class="float-right"><%= link_to "Your Event Page", event_path(@event) %></h4>
     <%= link_to "Add Guest Party", new_event_party_path, class: "btn btn-lg btn-primary" %>
   </div>
+  <div class="col-sm-12 guest-search pull-right">
+    <div class="form-group">
+      <%= form_for search_path, method: :get do |f| %>
+          <%= text_field_tag :q, params[:q], placeholder: "Search", class: "form-control inline" %>
+          <%= submit_tag "Go", name: nil, class: "btn btn-sm btn-primary inline" %>
+      <% end %>
+    </div>
+  </div>
   <table class="table table-striped table-hover">
     <tr>
       <th>Guest Name</th>

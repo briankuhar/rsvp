@@ -26,6 +26,8 @@ class GuestsController < ApplicationController
     end
   end
   
+
+  
   def new
     @event = Event.friendly.find(params[:event_id])
     @guest = @event.guests.new

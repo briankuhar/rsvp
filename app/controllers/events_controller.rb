@@ -43,6 +43,15 @@ class EventsController < ApplicationController
     end
   end
   
+  def search
+    @event = Event.friendly.find(params[:event_id])
+    if params[:q].nil?
+      @guests = []
+    else
+      @guests = @event.guests.search params[:q]
+    end
+  end
+  
   def rsvp
     @event = Event.friendly.find(params[:id])
     @guests = @event.guests.all

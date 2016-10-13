@@ -16,6 +16,8 @@ gem 'pg'
 gem 'friendly_id'
 gem 'will_paginate'
 gem 'faker'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 group :development, :test do
   #gem 'sqlite3'

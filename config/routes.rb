@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     end
   end
   
+  
+  get 'search', to: 'search#search'
+  
   authenticated do
     root to: "events#index", as: :authenticated
   end
