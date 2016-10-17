@@ -8,9 +8,10 @@ class GuestsController < ApplicationController
       customer_search_term = GuestSearchTerm.new(@keywords)
       @guests = @event.guests.where(customer_search_term.where_clause,
                                   customer_search_term.where_args).
-                                order(customer_search_term.order)
+                          order(customer_search_term.order).
+                          paginate(:page => params[:page], :per_page => 12)
     else
-      @guests = @event.guests.all
+      @guests = @event.guests.paginate(:page => params[:page], :per_page => 12)
     end
     
     #@guests = @event.guests.all
