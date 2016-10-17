@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006215652) do
+ActiveRecord::Schema.define(version: 20161017192128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,13 @@ ActiveRecord::Schema.define(version: 20161006215652) do
     t.integer  "phone"
     t.boolean  "guest_status"
     t.integer  "party_id"
+    t.index "lower((email)::text)", name: "guests_lower_email", using: :btree
+    t.index "lower((first_name)::text) varchar_pattern_ops", name: "guests_lower_first_name", using: :btree
+    t.index "lower((last_name)::text) varchar_pattern_ops", name: "guests_lower_last_name", using: :btree
+    t.index ["email"], name: "index_guests_on_email", using: :btree
     t.index ["event_id"], name: "index_guests_on_event_id", using: :btree
+    t.index ["first_name"], name: "index_guests_on_first_name", using: :btree
+    t.index ["last_name"], name: "index_guests_on_last_name", using: :btree
     t.index ["party_id"], name: "index_guests_on_party_id", using: :btree
   end
 

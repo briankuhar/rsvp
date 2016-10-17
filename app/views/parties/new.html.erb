@@ -3,22 +3,20 @@
   <div class="form-group col-sm-10 col-sm-offset-1 well" id="guests">
     <ul>
       <% if @party.errors.any? %>
-          <% @party.errors.each do |attribute, msg| %>
-            <li><%= "#{attribute} #{msg}" if @party.errors[attribute].first == msg %>
-          <% end %>
+        <% @party.errors.each do |attribute, msg| %>
+          <li><%= "#{attribute} #{msg}" if @party.errors[attribute].first == msg %>
         <% end %>
-      <%= form_for [@event, @party] do |f| %>
+      <% end %>
     </ul>
+  <%= form_for [@event, @party] do |f| %>
 
-      <%= render :partial => 'guest_fields', :locals => { :f => f } %>
-  </div>
-    
-  <div class="col-sm-8 col-sm-offset-2 pull-right">
-    <%= f.submit "Create Party", class: "btn btn-primary pull-right", style: "margin-right: 10%;" %>
-    <%= link_to "Back", event_guests_path(@event), class: "btn btn-danger pull-right", style: "margin-right: 5px;" %> 
-  </div>
+    <%= render :partial => 'guest_fields', :locals => { :f => f } %>
   
-
-<% end %>
-
+    <div class="col-sm-8 col-sm-offset-2 pull-right">
+      <%= f.submit "Create Party", class: "btn btn-primary pull-right", style: "margin-right: 10%;" %>
+      <%= link_to "Back", event_guests_path(@event), class: "btn btn-danger pull-right", style: "margin-right: 5px;" %> 
+    </div>
+    
+  <% end %>
+</div>
 

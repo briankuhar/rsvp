@@ -3,7 +3,17 @@ class GuestsController < ApplicationController
   
   def index
     @event = Event.friendly.find(params[:event_id])
-    @guests = @event.guests.paginate(:page => params[:page], :per_page => 15)
+    if params[:keywords].present?
+      @keywords = params[:keywords]
+      customer_search_term = GuestSearchTerm.new(@keywords)
+      @guests = @event.guests.where(customer_search_term.where_clause,
+                                  customer_search_term.where_args).
+                                order(customer_search_term.order)
+    else
+      @guests = @event.guests.all
+    end
+    
+    #@guests = @event.guests.all
   end
   
   def meal_selection(guest)
