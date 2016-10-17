@@ -30,7 +30,7 @@
       <th>Guest Phone</th>
       <th>Actions</th>
     </tr>
-    <%= will_paginate @guests %>
+    <%= will_paginate @guests, renderer: BootstrapPagination::Rails %>
     <% @guests.each do |guest| %>
     <tr>
       <td><%= guest.full_name %></td>
