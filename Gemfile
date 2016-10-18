@@ -4,24 +4,26 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'puma', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
-gem 'bootstrap-sass', '3.3.6'
 gem 'pg'
 gem 'friendly_id'
 gem 'will_paginate'
-gem 'will_paginate-bootstrap'
 gem 'faker'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
+group :assets do
+  gem 'jquery-ui-rails'
+  gem 'sass-rails', '~> 5.0'
+  gem 'uglifier', '>= 1.3.0'
+  gem 'coffee-rails', '~> 4.2'
+  gem 'bootstrap-sass', '3.3.6'
+  gem 'will_paginate-bootstrap'
+end
+
 group :development, :test do
-  #gem 'sqlite3'
   gem 'byebug', platform: :mri
 end
 
