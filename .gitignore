@@ -21,3 +21,5 @@
 .byebug_history
 
 database.yml
+
+config/initializers/stripe.rb
