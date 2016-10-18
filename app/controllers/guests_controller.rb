@@ -1,5 +1,5 @@
 class GuestsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :new, :update_status, :meal_selection]
+  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :new,]
   
   def index
     @event = Event.friendly.find(params[:event_id])

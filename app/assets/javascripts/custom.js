@@ -1,6 +1,9 @@
-$(document).ready(function(){
-  $("#addNewGuest").click(function(){
-    $("#guests").append($("#new_guest").html());
-  });
-});
+$(document).ready(function() {
 
+  $(".guest-rsvp-checkbox").change(function() {
+    console.log("click event")
+    var guestRowID = "#guest-rsvp-row" + $(this).val();
+    $(guestRowID).animate({'backgroundColor' : '#5cb85c'}, 'fast').animate({'backgroundColor' : ''});
+  });
+  
+});

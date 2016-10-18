@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   layout :resolve_layout
   
-  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :create]
 
   def index
     @user = current_user
@@ -54,7 +54,16 @@ class EventsController < ApplicationController
   
   def rsvp
     @event = Event.friendly.find(params[:id])
-    @guests = @event.guests.all
+    if params[:keywords].present?
+      @keywords = params[:keywords]
+      customer_search_term = GuestSearchTerm.new(@keywords)
+      @guests = @event.guests.where(customer_search_term.where_clause,
+                                  customer_search_term.where_args).
+                          order(customer_search_term.order).
+                          paginate(:page => params[:page], :per_page => 12)
+    else
+      @guests = []
+    end
   end
   
   def destroy
@@ -71,6 +80,8 @@ class EventsController < ApplicationController
     def resolve_layout
       case action_name
       when "show"
+        "rsvp"
+      when "rsvp"
         "rsvp"
       else
         "application"

@@ -7,14 +7,10 @@ Rails.application.routes.draw do
     resources :parties
     resources :guests do
       member do
-        get 'rsvp', only: [:index]
         patch :update_status
       end
     end
   end
-  
-  
-  get 'search', to: 'search#search'
   
   authenticated do
     root to: "events#index", as: :authenticated

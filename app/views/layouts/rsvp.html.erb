@@ -21,15 +21,13 @@
             </ul>
           </nav>
         </div>
+        <%= link_to "Back to Event", event_guests_path(@event), class: "btn btn-success btn-sm btn-block" %>
       </header>
-      
-      <div class="container">
-          <%= link_to "Back to Event", event_guests_path(@event), class: "btn btn-primary" %>
-      </div>
     <% end %>
+    <br><br>
     
     <div class="container">
-      <h1>Custom Event Page Stuff</h1>
+      <%= yield %>
     </div>
   </body>
 </html>
