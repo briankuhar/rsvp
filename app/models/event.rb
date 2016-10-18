@@ -11,9 +11,21 @@ class Event < ApplicationRecord
   has_many :guests
   accepts_nested_attributes_for :guests, :reject_if => proc { |attributes| attributes['last_name'].blank?  }
   attr_accessor :slug
+  attr_accessor :stripe_card_token
+  attr_accessor :user_email
   
   def should_generate_new_friendly_id?
     new_record? || slug.blank?
+  end
+  
+  def save_with_payment
+    if valid?
+      Stripe::Charge.create(:amount => 2999, 
+                          :currency => "usd", 
+                          :source => stripe_card_token,
+                          :description => user_email + " - " + event_name)
+      save!
+    end
   end
   
 end

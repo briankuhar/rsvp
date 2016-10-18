@@ -23,7 +23,8 @@ class EventsController < ApplicationController
     @user = current_user
     @event = @user.events.new(event_params)
     @event.path = @event.event_name.gsub(/[^0-9a-z\\s]/i, '').downcase
-    if @event.save
+    if @event.save_with_payment
+      flash[:success] = "Event created successfully"
       redirect_to root_path
     else
       render 'new'
@@ -74,7 +75,7 @@ class EventsController < ApplicationController
   private
   
     def event_params
-      params.require(:event).permit(:event_type, :event_date, :event_name, :event_rsvp_date)
+      params.require(:event).permit(:event_type, :event_date, :event_name, :event_rsvp_date, :stripe_card_token, :user_email)
     end
 
     def resolve_layout

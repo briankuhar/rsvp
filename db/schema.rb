@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017192128) do
+ActiveRecord::Schema.define(version: 20161018035108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,13 @@ ActiveRecord::Schema.define(version: 20161017192128) do
     t.integer  "user_id"
     t.string   "event_type"
     t.date     "event_date"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.string   "event_name"
     t.date     "event_rsvp_date"
     t.string   "path"
     t.string   "slug"
+    t.string   "stripe_customer_token"
     t.index ["path"], name: "index_events_on_path", unique: true, using: :btree
     t.index ["slug"], name: "index_events_on_slug", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
