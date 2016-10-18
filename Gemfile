@@ -6,7 +6,9 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'puma', '~> 3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
+gem 'sprockets'
 gem 'jquery-ui-rails'
+gem 'bootstrap-sass', '3.3.6'
 gem 'devise'
 gem 'pg'
 gem 'friendly_id'
@@ -19,7 +21,6 @@ group :assets do
   gem 'sass-rails', '~> 5.0'
   gem 'uglifier', '>= 1.3.0'
   gem 'coffee-rails', '~> 4.2'
-  gem 'bootstrap-sass', '3.3.6'
   gem 'will_paginate-bootstrap'
 end
 
