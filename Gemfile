@@ -16,13 +16,10 @@ gem 'will_paginate'
 gem 'faker'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
-
-group :assets do
-  gem 'sass-rails', '~> 5.0'
-  gem 'uglifier', '>= 1.3.0'
-  gem 'coffee-rails', '~> 4.2'
-  gem 'will_paginate-bootstrap'
-end
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.2'
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   gem 'byebug', platform: :mri
