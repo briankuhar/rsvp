@@ -48,4 +48,4 @@ Event.all.each do |event|
                           phone: phone)
     end
   end
-end
+endUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
