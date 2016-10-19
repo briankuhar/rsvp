@@ -20,9 +20,12 @@ class Event < ApplicationRecord
   
   def save_with_payment
     if valid?
-      Stripe::Charge.create(:amount => 2999, 
+      customer = Stripe::Customer.create(
+        :source => stripe_card_token,
+        :descriptioin => "Customer for " + user_email)
+      Stripe::Charge.create(:amount => 4999, 
                           :currency => "usd", 
-                          :source => stripe_card_token,
+                          :customer => customer,
                           :description => user_email + " - " + event_name)
       save!
     end
