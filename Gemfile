@@ -22,8 +22,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'will_paginate-bootstrap'
 gem 'stripe'
 gem 'bootstrap-datepicker-rails'
-gem 'activeadmin', '~> 1.0.0.pre4'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+#gem 'activeadmin', '~> 1.0.0.pre4'
+#gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 group :development, :test do
   gem 'byebug', platform: :mri
