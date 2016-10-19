@@ -22,7 +22,7 @@ class Event < ApplicationRecord
     if valid?
       customer = Stripe::Customer.create(
         :source => stripe_card_token,
-        :descriptioin => "Customer for " + user_email)
+        :description => "Customer for " + user_email)
       Stripe::Charge.create(:amount => 4999, 
                           :currency => "usd", 
                           :customer => customer,
