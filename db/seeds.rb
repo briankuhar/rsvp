@@ -16,6 +16,8 @@
   User.create!(email: email, password: password, password_confirmation: password_confirmation)
 end
 
+puts 'Done with Users'
+
 
 User.all.each do |user|
   4.times do
@@ -33,6 +35,8 @@ User.all.each do |user|
   end
 end
 
+puts 'Done with Events'
+
 Event.all.each do |event|
   10.times do
     @party = event.parties.create!
@@ -48,4 +52,9 @@ Event.all.each do |event|
                           phone: phone)
     end
   end
-endUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
+end
+
+puts 'Done with Guests'
+  
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
