@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   layout :resolve_layout
   
-  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :create]
+  before_action :authenticate_user!, only: [:index, :edit, :update, :create]
   before_action :process_dates, only: [:create, :update]
 
 
