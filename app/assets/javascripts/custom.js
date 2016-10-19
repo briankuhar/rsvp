@@ -6,4 +6,9 @@ $(document).ready(function() {
     $(guestRowID).animate({'backgroundColor' : '#5cb85c'}, 'fast').animate({'backgroundColor' : ''});
   });
   
+  $('.datepicker').datepicker({
+    dateFormat: 'mm/dd/yyyy',
+    autoclose: true
+  });
+  
 });

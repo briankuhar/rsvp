@@ -2,6 +2,8 @@ class EventsController < ApplicationController
   layout :resolve_layout
   
   before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :create]
+  before_action :process_dates, only: [:create, :update]
+
 
   def index
     @user = current_user
@@ -23,6 +25,11 @@ class EventsController < ApplicationController
     @user = current_user
     @event = @user.events.new(event_params)
     @event.path = @event.event_name.gsub(/[^0-9a-z\\s]/i, '').downcase
+    puts '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'
+    puts 'Event Name: ' + @event.event_name
+    puts 'Event Date: ' + @event.event_date.to_s
+    puts 'Event RSVP Date: ' + @event.event_rsvp_date.to_s
+    puts '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'
     if @event.save_with_payment
       flash[:success] = "Event created successfully"
       redirect_to root_path
@@ -64,6 +71,17 @@ class EventsController < ApplicationController
                           paginate(:page => params[:page], :per_page => 12)
     else
       @guests = []
+    end
+  end
+  
+  def process_dates
+    [:event_date, :event_rsvp_date].each do |d|
+      # assuming 'mm/dd/yyyy' format
+      date = params[:event][d]
+      date_parts = date.split('/')
+      # swap date and month
+      date_parts[0], date_parts[1] = date_parts[1], date_parts[0]
+      params[:event][d] = date_parts.join('/')
     end
   end
   
