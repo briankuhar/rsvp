@@ -6,6 +6,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+config.assets.initialize_on_precompile = false
+config.assets.precompile += %w[active_admin.css active_admin.js print.css]
+config.assets.precompile += %w[active_admin/print.css]
+
 module Rsvp
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
