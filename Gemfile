@@ -24,6 +24,7 @@ gem 'stripe'
 gem 'bootstrap-datepicker-rails'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'active_admin_theme'
 
 group :development, :test do
   gem 'byebug', platform: :mri

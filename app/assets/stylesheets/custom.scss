@@ -241,6 +241,10 @@ input:checked + .slider:before {
   margin-bottom: 40px;
 }
 
+.event-guest-hdr p {
+  text-align: left;
+}
+
 .event-guest-hdr .btn {
   display: block;
 }

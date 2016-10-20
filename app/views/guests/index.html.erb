@@ -1,7 +1,9 @@
 <div class="col-sm-12">
-  <div class="well col-sm-12 event-guest-hdr">
+  <div class="well col-sm-6 col-sm-offset-3 event-guest-hdr">
     <h2><%= @event.event_name %> Guests</h2>
-    <h4 class="float-right"><%= link_to "Your Event Page", event_path(@event) %></h4>
+    <p><strong>Event Date:</strong> <%= @event.event_date %></p>
+    <p><strong>RSVPs Due By:</strong> <%= @event.event_rsvp_date %></p>
+    <p><strong>Event Link: </strong><%= link_to request.base_url + event_path(@event).to_s, event_path(@event) %></p>
     <%= link_to "Add Guest Party", new_event_party_path, class: "btn btn-lg btn-primary" %>
   </div>
   <div class="row" style="margin-bottom: 10px;">

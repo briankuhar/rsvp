@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users
+  devise_for :users, :controllers => { sessions: "users/sessions", registrations: "users/registrations" }
   resources :events do
     member do
       get 'rsvp'
@@ -14,8 +14,8 @@ Rails.application.routes.draw do
     end
   end
   
-  authenticated do
-    root to: "events#index", as: :authenticated
+  authenticated :user do
+    root to: "events#index", as: :authenticated_root
   end
   
   root to: "home_page#static"

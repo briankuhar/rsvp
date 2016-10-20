@@ -12,6 +12,12 @@
  *
  *= require jquery-ui
  *= require bootstrap-datepicker
- *= require_tree .
+ *= require custom
+ *= require home_page
  *= require_self
  */
+
+
+.container {
+  width: 80%;
+}
