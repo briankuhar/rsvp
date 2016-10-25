@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  ActiveAdmin.routes(self)
   devise_for :users, :controllers => { sessions: "users/sessions", registrations: "users/registrations" }
+  ActiveAdmin.routes(self)
   resources :events do
     member do
       get 'rsvp'
