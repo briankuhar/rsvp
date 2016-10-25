@@ -34540,6 +34540,83 @@ return $.widget( "ui.tooltip", {
 }(jQuery));
 
 
+$(document).ready(function() {
+
+  $(".guest-rsvp-checkbox").change(function() {
+    console.log("click event")
+    var guestRowID = "#guest-rsvp-row" + $(this).val();
+    $(guestRowID).animate({'backgroundColor' : '#5cb85c'}, 'fast').animate({'backgroundColor' : ''});
+  });
+  
+  $('.datepicker').datepicker({
+    dateFormat: 'mm/dd/yyyy',
+    autoclose: true
+  });
+  
+});
+(function() {
+  $(function() {
+    $.rails.allowAction = function(link) {
+      if (!link.attr('data-confirm')) {
+        return true;
+      }
+      $.rails.showConfirmDialog(link);
+      return false;
+    };
+    $.rails.confirmed = function(link) {
+      link.removeAttr('data-confirm');
+      return link.trigger('click.rails');
+    };
+    return $.rails.showConfirmDialog = function(link) {
+      var html, message;
+      message = link.attr('data-confirm');
+      html = "<div class=\"modal\" id=\"confirmationDialog\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <a class=\"close\" data-dismiss=\"modal\">×</a>\n        <h2>" + message + "</h2>\n      </div>\n      <div class=\"modal-footer\">\n        <a data-dismiss=\"modal\" class=\"btn\">" + (link.data('cancel')) + "</a>\n        <a data-dismiss=\"modal\" class=\"btn btn-primary confirm\">" + (link.data('ok')) + "</a>\n      </div>\n    </div>\n  </div>\n</div>";
+      $(html).modal();
+      return $('#confirmationDialog .confirm').on('click', function() {
+        return $.rails.confirmed(link);
+      });
+    };
+  });
+
+}).call(this);
+(function() {
+  var payment;
+
+  jQuery(function() {
+    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
+    return payment.setupForm();
+  });
+
+  payment = {
+    setupForm: function() {
+      return $('#new_event').submit(function() {
+        $('input[type=submit]').attr('disabled', true);
+        payment.processCard();
+        return false;
+      });
+    },
+    processCard: function() {
+      var card;
+      card = {
+        number: $('#card_number').val(),
+        cvc: $('#card_code').val(),
+        expMonth: $('#card_month').val(),
+        expYear: $('#card_year').val()
+      };
+      return Stripe.createToken(card, payment.handleStripeResponse);
+    },
+    handleStripeResponse: function(status, response) {
+      if (status === 200) {
+        $('#event_stripe_card_token').val(response.id);
+        return $('#new_event')[0].submit();
+      } else {
+        $('#stripe_error').text(response.error.message);
+        return $('input[type=submit]').attr('disabled', false);
+      }
+    }
+  };
+
+}).call(this);
 (function() {
   var slice = [].slice;
 
@@ -35143,78 +35220,6 @@ return $.widget( "ui.tooltip", {
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
-$(document).ready(function() {
-
-  $(".guest-rsvp-checkbox").change(function() {
-    console.log("click event")
-    var guestRowID = "#guest-rsvp-row" + $(this).val();
-    $(guestRowID).animate({'backgroundColor' : '#5cb85c'}, 'fast').animate({'backgroundColor' : ''});
-  });
-  
-});
-(function() {
-  $(function() {
-    $.rails.allowAction = function(link) {
-      if (!link.attr('data-confirm')) {
-        return true;
-      }
-      $.rails.showConfirmDialog(link);
-      return false;
-    };
-    $.rails.confirmed = function(link) {
-      link.removeAttr('data-confirm');
-      return link.trigger('click.rails');
-    };
-    return $.rails.showConfirmDialog = function(link) {
-      var html, message;
-      message = link.attr('data-confirm');
-      html = "<div class=\"modal\" id=\"confirmationDialog\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <a class=\"close\" data-dismiss=\"modal\">×</a>\n        <h2>" + message + "</h2>\n      </div>\n      <div class=\"modal-footer\">\n        <a data-dismiss=\"modal\" class=\"btn\">" + (link.data('cancel')) + "</a>\n        <a data-dismiss=\"modal\" class=\"btn btn-primary confirm\">" + (link.data('ok')) + "</a>\n      </div>\n    </div>\n  </div>\n</div>";
-      $(html).modal();
-      return $('#confirmationDialog .confirm').on('click', function() {
-        return $.rails.confirmed(link);
-      });
-    };
-  });
-
-}).call(this);
-(function() {
-  var payment;
-
-  jQuery(function() {
-    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
-    return payment.setupForm();
-  });
-
-  payment = {
-    setupForm: function() {
-      return $('#new_event').submit(function() {
-        $('input[type=submit]').attr('disabled', true);
-        payment.processCard();
-        return false;
-      });
-    },
-    processCard: function() {
-      var card;
-      card = {
-        number: $('#card_number').val(),
-        cvc: $('#card_code').val(),
-        expMonth: $('#card_month').val(),
-        expYear: $('#card_year').val()
-      };
-      return Stripe.createToken(card, payment.handleStripeResponse);
-    },
-    handleStripeResponse: function(status, response) {
-      if (status === 200) {
-        $('#event_stripe_card_token').val(response.id);
-        return $('#new_event')[0].submit();
-      } else {
-        $('#stripe_error').text(response.error.message);
-        return $('input[type=submit]').attr('disabled', false);
-      }
-    }
-  };
-
-}).call(this);
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -35233,6 +35238,11 @@ $(document).ready(function() {
 
 
 
+
+
+
+
+//require_tree .
 
 
 

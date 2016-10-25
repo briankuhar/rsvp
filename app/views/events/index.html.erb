@@ -20,14 +20,12 @@
         <h3>Event Date: <%= event.event_date %></h3>
         <h3>RSVPs Due By: <%= event.event_rsvp_date %></h3>
         <p><%= link_to 'Edit', edit_event_path(event.id) %> | 
-        <%= link_to 'Delete', event, method: :delete, 
-                        data: { remote: true, :type => :json,
-                                confirm: "Are you sure you want to delete this event?",
-                                ok: 'Delete', cancel: 'Cancel'} %></p>
+        <%= link_to 'Delete', event_path(event), method: :delete,
+                                data: { confirm: "Are you sure you want to delete this event? This action is non-reversable",
+                                ok: 'Delete', cancel: 'Cancel'}%></p>
       </div>
     </div>
   <% end %>
 
 
 <% end %>
-

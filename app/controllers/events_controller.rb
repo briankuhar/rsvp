@@ -87,8 +87,10 @@ class EventsController < ApplicationController
   
   def destroy
     Event.friendly.find(params[:id]).destroy
+    puts '=-=-=-=-=-=-=-DELETED=-=-=-=-=-=-=-='
     redirect_to root_path
   end
+  
   
   private
   

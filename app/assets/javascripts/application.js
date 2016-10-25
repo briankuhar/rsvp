@@ -15,7 +15,12 @@
 //= require bootstrap
 //= require jquery-ui
 //= require bootstrap-datepicker
-//= require_tree .
+//= require custom
+//= require home_page
+//= require payments
+//= require cable
+
+//require_tree .
 
 
 
