@@ -13,5 +13,26 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
+  index do
+    selectable_column
+    column :id
+    column :email
+    column :current_sign_in_at
+    column :last_sign_in_at
+    column :current_sign_in_ip
+    column :last_sign_in_ip
+    column :created_at
+    column :updated_at
+    column :admin
+    actions
+  end
+
+
+    
+  sidebar "User Details", only: :show do
+    ul do
+      li link_to "Events", admin_user_events_path(user)
+    end
+  end
 
 end

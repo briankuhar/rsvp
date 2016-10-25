@@ -1,77 +1,77 @@
-                   Prefix Verb   URI Pattern                                          Controller#Action
-               admin_root GET    /admin(.:format)                                     admin/dashboard#index
- batch_action_admin_users POST   /admin/users/batch_action(.:format)                  admin/users#batch_action
-              admin_users GET    /admin/users(.:format)                               admin/users#index
-                          POST   /admin/users(.:format)                               admin/users#create
-           new_admin_user GET    /admin/users/new(.:format)                           admin/users#new
-          edit_admin_user GET    /admin/users/:id/edit(.:format)                      admin/users#edit
-               admin_user GET    /admin/users/:id(.:format)                           admin/users#show
-                          PATCH  /admin/users/:id(.:format)                           admin/users#update
-                          PUT    /admin/users/:id(.:format)                           admin/users#update
-                          DELETE /admin/users/:id(.:format)                           admin/users#destroy
-          admin_dashboard GET    /admin/dashboard(.:format)                           admin/dashboard#index
-batch_action_admin_events POST   /admin/events/batch_action(.:format)                 admin/events#batch_action
-             admin_events GET    /admin/events(.:format)                              admin/events#index
-                          POST   /admin/events(.:format)                              admin/events#create
-          new_admin_event GET    /admin/events/new(.:format)                          admin/events#new
-         edit_admin_event GET    /admin/events/:id/edit(.:format)                     admin/events#edit
-              admin_event GET    /admin/events/:id(.:format)                          admin/events#show
-                          PATCH  /admin/events/:id(.:format)                          admin/events#update
-                          PUT    /admin/events/:id(.:format)                          admin/events#update
-                          DELETE /admin/events/:id(.:format)                          admin/events#destroy
-batch_action_admin_guests POST   /admin/guests/batch_action(.:format)                 admin/guests#batch_action
-             admin_guests GET    /admin/guests(.:format)                              admin/guests#index
-                          POST   /admin/guests(.:format)                              admin/guests#create
-          new_admin_guest GET    /admin/guests/new(.:format)                          admin/guests#new
-         edit_admin_guest GET    /admin/guests/:id/edit(.:format)                     admin/guests#edit
-              admin_guest GET    /admin/guests/:id(.:format)                          admin/guests#show
-                          PATCH  /admin/guests/:id(.:format)                          admin/guests#update
-                          PUT    /admin/guests/:id(.:format)                          admin/guests#update
-                          DELETE /admin/guests/:id(.:format)                          admin/guests#destroy
-           admin_comments GET    /admin/comments(.:format)                            admin/comments#index
-                          POST   /admin/comments(.:format)                            admin/comments#create
-            admin_comment GET    /admin/comments/:id(.:format)                        admin/comments#show
-                          DELETE /admin/comments/:id(.:format)                        admin/comments#destroy
-         new_user_session GET    /users/sign_in(.:format)                             users/sessions#new
-             user_session POST   /users/sign_in(.:format)                             users/sessions#create
-     destroy_user_session DELETE /users/sign_out(.:format)                            users/sessions#destroy
-            user_password POST   /users/password(.:format)                            devise/passwords#create
-        new_user_password GET    /users/password/new(.:format)                        devise/passwords#new
-       edit_user_password GET    /users/password/edit(.:format)                       devise/passwords#edit
-                          PATCH  /users/password(.:format)                            devise/passwords#update
-                          PUT    /users/password(.:format)                            devise/passwords#update
- cancel_user_registration GET    /users/cancel(.:format)                              users/registrations#cancel
-        user_registration POST   /users(.:format)                                     users/registrations#create
-    new_user_registration GET    /users/sign_up(.:format)                             users/registrations#new
-   edit_user_registration GET    /users/edit(.:format)                                users/registrations#edit
-                          PATCH  /users(.:format)                                     users/registrations#update
-                          PUT    /users(.:format)                                     users/registrations#update
-                          DELETE /users(.:format)                                     users/registrations#destroy
-               rsvp_event GET    /events/:id/rsvp(.:format)                           events#rsvp
-            event_parties GET    /events/:event_id/parties(.:format)                  parties#index
-                          POST   /events/:event_id/parties(.:format)                  parties#create
-          new_event_party GET    /events/:event_id/parties/new(.:format)              parties#new
-         edit_event_party GET    /events/:event_id/parties/:id/edit(.:format)         parties#edit
-              event_party GET    /events/:event_id/parties/:id(.:format)              parties#show
-                          PATCH  /events/:event_id/parties/:id(.:format)              parties#update
-                          PUT    /events/:event_id/parties/:id(.:format)              parties#update
-                          DELETE /events/:event_id/parties/:id(.:format)              parties#destroy
-update_status_event_guest PATCH  /events/:event_id/guests/:id/update_status(.:format) guests#update_status
-             event_guests GET    /events/:event_id/guests(.:format)                   guests#index
-                          POST   /events/:event_id/guests(.:format)                   guests#create
-          new_event_guest GET    /events/:event_id/guests/new(.:format)               guests#new
-         edit_event_guest GET    /events/:event_id/guests/:id/edit(.:format)          guests#edit
-              event_guest GET    /events/:event_id/guests/:id(.:format)               guests#show
-                          PATCH  /events/:event_id/guests/:id(.:format)               guests#update
-                          PUT    /events/:event_id/guests/:id(.:format)               guests#update
-                          DELETE /events/:event_id/guests/:id(.:format)               guests#destroy
-                   events GET    /events(.:format)                                    events#index
-                          POST   /events(.:format)                                    events#create
-                new_event GET    /events/new(.:format)                                events#new
-               edit_event GET    /events/:id/edit(.:format)                           events#edit
-                    event GET    /events/:id(.:format)                                events#show
-                          PATCH  /events/:id(.:format)                                events#update
-                          PUT    /events/:id(.:format)                                events#update
-                          DELETE /events/:id(.:format)                                events#destroy
-       authenticated_root GET    /                                                    events#index
-                     root GET    /                                                    home_page#static
+                         Prefix Verb   URI Pattern                                           Controller#Action
+               new_user_session GET    /users/sign_in(.:format)                              users/sessions#new
+                   user_session POST   /users/sign_in(.:format)                              users/sessions#create
+           destroy_user_session DELETE /users/sign_out(.:format)                             users/sessions#destroy
+                  user_password POST   /users/password(.:format)                             devise/passwords#create
+              new_user_password GET    /users/password/new(.:format)                         devise/passwords#new
+             edit_user_password GET    /users/password/edit(.:format)                        devise/passwords#edit
+                                PATCH  /users/password(.:format)                             devise/passwords#update
+                                PUT    /users/password(.:format)                             devise/passwords#update
+       cancel_user_registration GET    /users/cancel(.:format)                               users/registrations#cancel
+              user_registration POST   /users(.:format)                                      users/registrations#create
+          new_user_registration GET    /users/sign_up(.:format)                              users/registrations#new
+         edit_user_registration GET    /users/edit(.:format)                                 users/registrations#edit
+                                PATCH  /users(.:format)                                      users/registrations#update
+                                PUT    /users(.:format)                                      users/registrations#update
+                                DELETE /users(.:format)                                      users/registrations#destroy
+                     admin_root GET    /admin(.:format)                                      admin/dashboard#index
+       batch_action_admin_users POST   /admin/users/batch_action(.:format)                   admin/users#batch_action
+                    admin_users GET    /admin/users(.:format)                                admin/users#index
+                                POST   /admin/users(.:format)                                admin/users#create
+                 new_admin_user GET    /admin/users/new(.:format)                            admin/users#new
+                edit_admin_user GET    /admin/users/:id/edit(.:format)                       admin/users#edit
+                     admin_user GET    /admin/users/:id(.:format)                            admin/users#show
+                                PATCH  /admin/users/:id(.:format)                            admin/users#update
+                                PUT    /admin/users/:id(.:format)                            admin/users#update
+                                DELETE /admin/users/:id(.:format)                            admin/users#destroy
+                admin_dashboard GET    /admin/dashboard(.:format)                            admin/dashboard#index
+ batch_action_admin_user_events POST   /admin/users/:user_id/events/batch_action(.:format)   admin/events#batch_action
+              admin_user_events GET    /admin/users/:user_id/events(.:format)                admin/events#index
+                                POST   /admin/users/:user_id/events(.:format)                admin/events#create
+           new_admin_user_event GET    /admin/users/:user_id/events/new(.:format)            admin/events#new
+          edit_admin_user_event GET    /admin/users/:user_id/events/:id/edit(.:format)       admin/events#edit
+               admin_user_event GET    /admin/users/:user_id/events/:id(.:format)            admin/events#show
+                                PATCH  /admin/users/:user_id/events/:id(.:format)            admin/events#update
+                                PUT    /admin/users/:user_id/events/:id(.:format)            admin/events#update
+                                DELETE /admin/users/:user_id/events/:id(.:format)            admin/events#destroy
+batch_action_admin_event_guests POST   /admin/events/:event_id/guests/batch_action(.:format) admin/guests#batch_action
+             admin_event_guests GET    /admin/events/:event_id/guests(.:format)              admin/guests#index
+                                POST   /admin/events/:event_id/guests(.:format)              admin/guests#create
+          new_admin_event_guest GET    /admin/events/:event_id/guests/new(.:format)          admin/guests#new
+         edit_admin_event_guest GET    /admin/events/:event_id/guests/:id/edit(.:format)     admin/guests#edit
+              admin_event_guest GET    /admin/events/:event_id/guests/:id(.:format)          admin/guests#show
+                                PATCH  /admin/events/:event_id/guests/:id(.:format)          admin/guests#update
+                                PUT    /admin/events/:event_id/guests/:id(.:format)          admin/guests#update
+                                DELETE /admin/events/:event_id/guests/:id(.:format)          admin/guests#destroy
+                 admin_comments GET    /admin/comments(.:format)                             admin/comments#index
+                                POST   /admin/comments(.:format)                             admin/comments#create
+                  admin_comment GET    /admin/comments/:id(.:format)                         admin/comments#show
+                                DELETE /admin/comments/:id(.:format)                         admin/comments#destroy
+                     rsvp_event GET    /events/:id/rsvp(.:format)                            events#rsvp
+                  event_parties GET    /events/:event_id/parties(.:format)                   parties#index
+                                POST   /events/:event_id/parties(.:format)                   parties#create
+                new_event_party GET    /events/:event_id/parties/new(.:format)               parties#new
+               edit_event_party GET    /events/:event_id/parties/:id/edit(.:format)          parties#edit
+                    event_party GET    /events/:event_id/parties/:id(.:format)               parties#show
+                                PATCH  /events/:event_id/parties/:id(.:format)               parties#update
+                                PUT    /events/:event_id/parties/:id(.:format)               parties#update
+                                DELETE /events/:event_id/parties/:id(.:format)               parties#destroy
+      update_status_event_guest PATCH  /events/:event_id/guests/:id/update_status(.:format)  guests#update_status
+                   event_guests GET    /events/:event_id/guests(.:format)                    guests#index
+                                POST   /events/:event_id/guests(.:format)                    guests#create
+                new_event_guest GET    /events/:event_id/guests/new(.:format)                guests#new
+               edit_event_guest GET    /events/:event_id/guests/:id/edit(.:format)           guests#edit
+                    event_guest GET    /events/:event_id/guests/:id(.:format)                guests#show
+                                PATCH  /events/:event_id/guests/:id(.:format)                guests#update
+                                PUT    /events/:event_id/guests/:id(.:format)                guests#update
+                                DELETE /events/:event_id/guests/:id(.:format)                guests#destroy
+                         events GET    /events(.:format)                                     events#index
+                                POST   /events(.:format)                                     events#create
+                      new_event GET    /events/new(.:format)                                 events#new
+                     edit_event GET    /events/:id/edit(.:format)                            events#edit
+                          event GET    /events/:id(.:format)                                 events#show
+                                PATCH  /events/:id(.:format)                                 events#update
+                                PUT    /events/:id(.:format)                                 events#update
+                                DELETE /events/:id(.:format)                                 events#destroy
+             authenticated_root GET    /                                                     events#index
+                           root GET    /                                                     home_page#static

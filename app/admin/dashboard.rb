@@ -29,5 +29,29 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
     # end
+    
+    @events = Event.all
+
+    columns do
+      column do
+        panel "Recent Events" do
+          table_for Event.all.order('id desc').limit(10) do
+            column("User") { |event| link_to event.user.email }
+            column("Event") { |event| link_to event.event_name, admin_user_event_path(event.user, event) }
+            column("Guest Count") { |event| event.guests.all.count }
+          end # table_for
+        end # panel
+      end # column
+      
+      column do
+        panel "Event Stats" do
+          ul do
+            li { Event.where(:created_at => (Date.today)).count }
+          end
+        end
+      end
+      
+    end # columns
+    
   end # content
 end
