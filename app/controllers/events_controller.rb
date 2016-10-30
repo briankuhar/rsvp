@@ -25,11 +25,6 @@ class EventsController < ApplicationController
     @user = current_user
     @event = @user.events.new(event_params)
     @event.path = @event.event_name.gsub(/[^0-9a-z\\s]/i, '').downcase
-    puts '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'
-    puts 'Event Name: ' + @event.event_name
-    puts 'Event Date: ' + @event.event_date.to_s
-    puts 'Event RSVP Date: ' + @event.event_rsvp_date.to_s
-    puts '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'
     if @event.save_with_payment
       flash[:success] = "Event created successfully"
       redirect_to root_path

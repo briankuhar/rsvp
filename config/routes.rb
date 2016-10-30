@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :posts
+  get 'blog/manage', to: 'posts#manage', as: :manage_blog
+  get 'blog', to: 'posts#index'
+  
   authenticated :user do
     root to: "events#index", as: :authenticated_root
   end
