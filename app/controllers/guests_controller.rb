@@ -11,10 +11,12 @@ class GuestsController < ApplicationController
                           order(customer_search_term.order).
                           paginate(:page => params[:page], :per_page => 12)
     else
-      @guests = @event.guests.paginate(:page => params[:page], :per_page => 12)
+      @guests = @event.guests.order(:last_name).paginate(:page => params[:page], :per_page => 12)
     end
-    
-    #@guests = @event.guests.all
+    respond_to do |format|
+      format.html
+      format.xls # { send_data @guests.to_csv(col_sep: "\t") }
+    end
   end
   
   def meal_selection(guest)
