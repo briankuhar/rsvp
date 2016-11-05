@@ -23,7 +23,11 @@
   </div>
   
   <div class="row">
-    <%= link_to "Download Guestlist To Excel", event_guests_path(@event, format:"xls") %>
+    <div class="col-sm-12 excel-export">
+      <%= link_to event_guests_path(@event, format:"xls"), class: "btn btn-sml btn-success" do %>
+        <i class="glyphicon glyphicon-export"></i> Excel
+      <% end %>
+    </div>
   </div>
   
   <div class="row">
