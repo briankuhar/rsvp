@@ -24,6 +24,8 @@ class EventsController < ApplicationController
   def create
     @user = current_user
     @event = @user.events.new(event_params)
+    @event_detail = EventDetail.create(params[:event_detail])
+    @event.event_detail = @event_detail
     @event.path = @event.event_name.gsub(/[^0-9a-z\\s]/i, '').downcase
     if @event.save_with_payment
       flash[:success] = "Event created successfully"
@@ -40,7 +42,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.friendly.find(params[:id])
     if @event.update_attributes(event_params)
-      redirect_to event_path(@event)
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -90,7 +92,15 @@ class EventsController < ApplicationController
   private
   
     def event_params
-      params.require(:event).permit(:event_type, :event_date, :event_name, :event_rsvp_date, :stripe_card_token, :user_email)
+      params.require(:event).permit( :event_type, :event_date, :event_name, 
+                                    :event_rsvp_date, :stripe_card_token, :path,
+                                    :user_email, event_detail_attributes: [ :id,
+                                      :event_id, :venue_name, :venue_city,
+                                      :venue_street_addr1, :venue_street_addr2,
+                                      :venue_state, :venue_zip, :event_info,
+                                      :event_photo, :event_theme, :event_accom,
+                                      :event_transport
+                                    ])
     end
 
     def resolve_layout

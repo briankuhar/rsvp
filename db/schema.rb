@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029210345) do
+ActiveRecord::Schema.define(version: 20161105194237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,24 @@ ActiveRecord::Schema.define(version: 20161029210345) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
   end
 
+  create_table "event_details", force: :cascade do |t|
+    t.string   "venue_name"
+    t.string   "venue_street_addr1"
+    t.string   "venue_street_addr2"
+    t.string   "venue_city"
+    t.text     "event_info"
+    t.string   "event_photo"
+    t.integer  "event_theme"
+    t.text     "event_accom"
+    t.text     "event_transport"
+    t.integer  "event_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "venue_state"
+    t.string   "venue_zip"
+    t.index ["event_id"], name: "index_event_details_on_event_id", using: :btree
+  end
+
   create_table "events", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "event_type"
@@ -40,6 +58,8 @@ ActiveRecord::Schema.define(version: 20161029210345) do
     t.string   "path"
     t.string   "slug"
     t.string   "stripe_customer_token"
+    t.integer  "event_detail_id"
+    t.index ["event_detail_id"], name: "index_events_on_event_detail_id", using: :btree
     t.index ["path"], name: "index_events_on_path", unique: true, using: :btree
     t.index ["slug"], name: "index_events_on_slug", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
@@ -114,5 +134,7 @@ ActiveRecord::Schema.define(version: 20161029210345) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "event_details", "events"
+  add_foreign_key "events", "event_details"
   add_foreign_key "guests", "parties"
 end

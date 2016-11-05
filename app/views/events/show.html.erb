@@ -1,3 +1,28 @@
-<h1>Event #<%= @event.id %> - <%= @event.event_date %> - <%= @event.event_type %></h1>
 
-<%= link_to "RSVP", rsvp_event_path(@event), class: "btn btn-primary btn-lg" %>
+<div class="container">
+  <h1 style="text-align: center;"><%= @event.event_name %></h1>
+  <h2 style="text-align: center;"><%= @event.event_date %></h2>
+  <hr>
+  <%= link_to "RSVP", rsvp_event_path(@event), class: "btn btn-primary btn-lg" %>
+  
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2 style="text-align: center;">General Event Information</h2>
+      <p><%= @event.event_detail.event_info %></p><hr>
+      <h2 style="text-align: center;">Accommodations</h2>
+      <p><%= @event.event_detail.event_accom %></p><hr>
+      <h2 style="text-align: center;">Transportation</h2>
+      <p><%= @event.event_detail.event_transport %></p><hr>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2 style="text-align: center;">Venue Details</h2>
+      <p><%= @event.event_detail.venue_name %><br>
+      <%= @event.event_detail.venue_street_addr1 %><br>
+      <%= @event.event_detail.venue_street_addr2 %>
+      <%= @event.event_detail.venue_city + ", " + @event.event_detail.venue_state + " " + @event.event_detail.venue_zip %></p>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,9 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :parties
   has_many :guests
+  has_one :event_detail, :dependent => :destroy
   accepts_nested_attributes_for :guests, :reject_if => proc { |attributes| attributes['last_name'].blank?  }
+  accepts_nested_attributes_for :event_detail, :allow_destroy => true
   attr_accessor :slug
   attr_accessor :stripe_card_token
   attr_accessor :user_email
